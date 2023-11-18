@@ -22,7 +22,7 @@ intervals by the matching half-hourly fuel mix of the National Grid's fuel mix d
 
 The backend dashboard uses the following REST API endpoints to retrieve the data:
 * [Openvolt API v.1](https://docs.openvolt.com/reference/introduction) - openvolt.com
-* [Carbon Intensity API v.2.0.0](https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v2-0-0)- National Grid (GB)
+* [Carbon Intensity API v.2.0.0](https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v2-0-0)- National Grid
 
 
 ## Installation
@@ -58,7 +58,7 @@ The returned data object contains the following properties:
 * `totalEnergyConsumptionUnit`: `string` - the unit of the total energy consumption (e.g., `kWh`)
 * `emittedCO2`: `number` - the total amount of CO2 emitted by the energy consumption of the meter in the given period
 * `emittedCO2Unit`: `string` - the unit of the emitted CO2 (e.g., `kg`)
-* `fuelMix`: `Object` - the fuel mix of the UK grid in the given period
+* `fuelMix`: `Object` - the fuel mix of the meter in the given period
   * `energyWithUnknownOrigin`: `number` - the total energy consumption of the meter in the given period for which the origin is unknown
   * `energyWithUnknownOriginUnit`: `string` - the unit of the energy consumption for which the origin is unknown (e.g., `kWh`)
   * `generationMix`: `Object[]` - the fuel mix for a given `meter_id` in the given period
@@ -87,7 +87,46 @@ The returned data object contains the following properties:
 /footprint?meter_id=6514167223e3d1424bf82742&granularity=hh&start_date=2023-01-01T00:00:00Z&end_date=2023-02-01T00:00:00Z
 ```
 
-#### Notes
+### GET /meters/:meter_id
+
+Returns information about a meter with the given `meter_id`.
+
+The returned data object contains the following properties:
+* `_id`: `string` - the id of the meter
+* `object`: `string` - the type of the object (e.g., `meter`)
+* `account`: `string` - the id of the account to which the meter belongs
+* `meter_number`: `string` - the number of the meter
+* `customer`: `Object` - the customer to which the meter belongs
+  * `_id`: `string` - the id of the customer
+  * `object`: `string` - the type of the object (e.g., `customer`)
+  * `account`: `string` - the id of the account to which the customer belongs
+  * `name`: `string` - the name of the customer
+  * `email`: `string` - the email of the customer
+  * `address`: `string` - the address of the customer
+  * `notes`: `string[]` - the notes of the customer
+  * `created_at`: `string` - the date when the customer was created
+  * `__v`: `number` - the version of the customer
+* `address`: `string` - the address of the meter
+* `update_frequency`: `string` - the update frequency of the meter (e.g., `weekly`)
+* `data_source`: `string` - the data source of the meter (e.g., `electralink`)
+* `status`: `string` - the status of the meter (e.g., `active`)
+* `notes`: `string[]` - the notes of the meter
+* `created_at`: `string` - the date when the meter was created
+* `__v`: `number` - the version of the meter
+* `description`: `string` - the description of the meter
+
+#### Query parameters
+* `meter_id` - the id of the meter for which the data is requested
+
+#### Examples
+
+```
+/meters/6514167223e3d1424bf82742
+``` 
+
+
+
+### Notes
 * the share values are fixed to 3 decimal places, so 0.000 is returned for a value of 0.0001.
 * the `energyWithUnknownOrigin` is calculated by subtracting the sum of the `generationMix` with accounted origin from the `totalEnergyConsumption`.
 * either `meter_id` or a combination of (`meter_number` and `customer_id`) must be provided.
