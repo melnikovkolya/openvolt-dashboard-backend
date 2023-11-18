@@ -29,6 +29,8 @@ The backend dashboard uses the following REST API endpoints to retrieve the data
 
 Clone the repository and navigate into it.
 
+Create an `.env` file with the contents provided in the `example.env` file.
+
 Run
 
 ```bash
