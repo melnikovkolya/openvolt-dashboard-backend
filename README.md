@@ -88,7 +88,7 @@ The returned data object contains the following properties:
 ```
 
 #### Notes
-* the share values are fixed to 2 decimal places, so 0.00% is returned for a value of 0.0001%.
+* the share values are fixed to 3 decimal places, so 0.000 is returned for a value of 0.0001.
 * the `energyWithUnknownOrigin` is calculated by subtracting the sum of the `generationMix` with accounted origin from the `totalEnergyConsumption`.
 * either `meter_id` or a combination of (`meter_number` and `customer_id`) must be provided.
 * `lookback` is an alternative to `start_date` and `end_date` and it is used to calculate the `start_date` and `end_date` based on the current date.
