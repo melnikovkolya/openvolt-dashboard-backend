@@ -15,7 +15,6 @@ import {
   OPEN_VOLT_API_DATE_FORMAT,
   UNIT_KG,
   UNIT_KWH,
-  UNKNOWN,
 } from './constants'
 import { getPollutionFuelMix } from '../fuelMixController/services'
 

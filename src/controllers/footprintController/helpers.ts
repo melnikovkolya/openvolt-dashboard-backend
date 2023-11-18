@@ -3,7 +3,6 @@ import { FootprintRequest } from '../types'
 import {
   FuelGenerationShareType,
   FuelGenerationType,
-  FuelMixShares,
   IntervalDataItem,
   PollutionFuelMixDataItem,
   PollutionFuelMixDataMap,
