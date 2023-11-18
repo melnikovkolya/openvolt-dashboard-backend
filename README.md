@@ -29,7 +29,7 @@ The backend dashboard uses the following REST API endpoints to retrieve the data
 
 Clone the repository and navigate into it.
 
-Create an `.env` file with the contents provided in the `example.env` file.
+Create an `.env` file with the contents provided in the `example.env` file. Make sure to set the `X_API_KEY` value as suggested in the `example.env` file.
 
 Run
 
