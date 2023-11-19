@@ -133,4 +133,4 @@ The returned data object contains the following properties:
 * `lookback` is an alternative to `start_date` and `end_date` and it is used to calculate the `start_date` and `end_date` based on the current date.
   In this example we only make use of the `start_date` and `end_date` query parameters.
 * `granularity` value of `hh` is the only supported value at the moment.
-  * `start_date` and `end_date` must be provided in the ISO 8601 format.
+* `start_date` and `end_date` must be provided in the ISO 8601 format.
